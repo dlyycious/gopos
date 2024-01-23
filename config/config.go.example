@@ -1,0 +1,26 @@
+package config
+
+import "time"
+
+const (
+	
+	//APP ADDRESS
+	//Port only use ":8000"
+	APP_ADDRESS string = ""
+
+	//JSON Web Token
+	JWT_EXP time.Duration = 0 //hours
+	JWT_KEY string        = ""
+
+	//Database Config
+	DB_HOST string = ""
+	DB_PORT uint   = 5432
+	DB_USER string = ""
+	DB_PASS string = ""
+	DB_NAME string = ""
+	DB_PROV string = "postgres" // "postgres" / "mysql"
+
+	DB_CONN_POOL_IDLE int           = 
+	DB_CONN_POOL_OPEN int           = 
+	DB_CONN_POOL_TIME time.Duration = 
+)
