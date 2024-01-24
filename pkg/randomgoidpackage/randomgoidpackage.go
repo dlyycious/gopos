@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func GenerateRandomNumber(length int) int {
+func GenerateRandomNumber(length int) uint {
 	// Set the seed based on the current time
 	rand.Seed(time.Now().UnixNano())
 
@@ -14,7 +14,7 @@ func GenerateRandomNumber(length int) int {
 	max := intPow(10, length) - 1
 
 	// Generate a random number within the specified range
-	return rand.Intn(max-min+1) + min
+	return uint(rand.Intn(max-min+1) + min)
 }
 
 // Helper function to calculate the power of an integer
