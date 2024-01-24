@@ -13,7 +13,7 @@ type User struct {
 	Fullname  string `gorm:"type:varchar(25)"`
 	Email     string `gorm:"type:varchar(50)"`
 	Goid      uint   `gorm:"index"`
-	RoleId    uint
+	RoleId    uint   `json:"role_id"`
 	IsVerfied bool
 	CreatedAt time.Time
 	UpdatedAt time.Time

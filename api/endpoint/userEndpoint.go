@@ -10,4 +10,5 @@ func UserEndpoint(app *fiber.App) {
 	router := app.Group("/user")
 	router.Use(middleware.AuthMiddleware)
 	router.Get("/", handler.GetInfoHandler)
+	router.Post("/", middleware.HasManageUser, handler.CreateUserHandler)
 }
