@@ -11,7 +11,7 @@ import (
 func CreateUserHandler(c *fiber.Ctx) error {
 	field := new(model.User)
 	if err := c.BodyParser(field); err != nil {
-		return responsepackage.SendJSON(c, err.Error(), 400, false)
+		return responsepackage.SendJSON(c, err.Error(), 500, false)
 	}
 	passwd, _ := bcrypt.GenerateFromPassword([]byte(field.Password), bcrypt.DefaultCost)
 	dtos := usermodule.UserDtos{
@@ -24,7 +24,7 @@ func CreateUserHandler(c *fiber.Ctx) error {
 	}
 	user, err := dtos.Create()
 	if err != nil {
-		return responsepackage.SendJSON(c, "username already exists", 400, false)
+		return responsepackage.SendJSON(c, "Username already exists", 400, false)
 	}
-	return responsepackage.SendSuccessJSON(c, "success create new account", user)
+	return responsepackage.SendSuccessJSON(c, "Success Create New Account", user)
 }

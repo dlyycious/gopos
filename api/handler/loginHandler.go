@@ -11,7 +11,7 @@ func LoginHandlers(c *fiber.Ctx) error {
 	dtos := new(authmodule.LoginDtos)
 
 	if err := c.BodyParser(dtos); err != nil {
-		return responsepackage.SendJSON(c, err.Error(), 400, false)
+		return responsepackage.SendJSON(c, err.Error(), 500, false)
 	}
 
 	user, err := dtos.Login()
@@ -19,11 +19,11 @@ func LoginHandlers(c *fiber.Ctx) error {
 	if err != nil {
 		switch err {
 		case gorm.ErrRecordNotFound:
-			return responsepackage.SendJSON(c, "username not found", 400, false)
+			return responsepackage.SendJSON(c, "Username Not Found", 400, false)
 		case fiber.ErrBadRequest:
-			return responsepackage.SendJSON(c, "password is invalid", 400, false)
+			return responsepackage.SendJSON(c, "Password is Invalid", 400, false)
 		default:
-			return responsepackage.SendJSON(c, err.Error(), 400, false)
+			return responsepackage.SendJSON(c, err.Error(), 500, false)
 		}
 	}
 	data := fiber.Map{

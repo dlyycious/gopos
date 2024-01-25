@@ -8,5 +8,5 @@ import (
 
 func GetInfoHandler(c *fiber.Ctx) error {
 	user := c.Locals("user").(authmodule.UserDtos)
-	return responsepackage.SendSuccessJSON(c, "success get info", user)
+	return responsepackage.SendSuccessJSON(c, "Success Get Info", user)
 }

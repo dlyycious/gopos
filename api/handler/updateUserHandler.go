@@ -12,7 +12,7 @@ import (
 func UpdateUserHandler(c *fiber.Ctx) error {
 	field := new(model.User)
 	if err := c.BodyParser(field); err != nil {
-		return responsepackage.SendJSON(c, err.Error(), 400, false)
+		return responsepackage.SendJSON(c, err.Error(), 500, false)
 	}
 
 	passwd, _ := bcrypt.GenerateFromPassword([]byte(field.Password), bcrypt.DefaultCost)
@@ -30,7 +30,7 @@ func UpdateUserHandler(c *fiber.Ctx) error {
 		case gorm.ErrRecordNotFound:
 			return responsepackage.SendJSON(c, "user not found", 400, false)
 		default:
-			return responsepackage.SendJSON(c, err.Error(), 400, false)
+			return responsepackage.SendJSON(c, err.Error(), 500, false)
 		}
 	}
 	return responsepackage.SendSuccessJSON(c, "success update user", user)

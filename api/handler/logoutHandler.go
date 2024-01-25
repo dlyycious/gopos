@@ -17,8 +17,8 @@ func LogoutHandler(c *fiber.Ctx) error {
 	_, err := authmodule.Logout(jwtsplit)
 
 	if err != nil {
-		return responsepackage.SendJSON(c, err.Error(), 400, false)
+		return responsepackage.SendJSON(c, err.Error(), 500, false)
 	}
 
-	return responsepackage.SendJSON(c, "logout success", 200, true)
+	return responsepackage.SendJSON(c, "Logout Success", 200, true)
 }

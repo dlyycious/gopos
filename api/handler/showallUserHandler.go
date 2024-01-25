@@ -12,7 +12,7 @@ func ShowAllUserHandler(c *fiber.Ctx) error {
 	db := database.DB
 	var users []model.User
 	if err := db.Preload("Role").Find(&users).Error; err != nil {
-		return responsepackage.SendJSON(c, err.Error(), 400, false)
+		return responsepackage.SendJSON(c, err.Error(), 500, false)
 	}
 
 	var userDtos []usermodule.UserDtos
